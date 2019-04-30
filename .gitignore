@@ -1,0 +1,4 @@
+*.pyc
+src/version.py
+
+build/

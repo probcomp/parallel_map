@@ -1,4 +1,5 @@
 *.pyc
 src/version.py
 
+.cache
 build/

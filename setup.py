@@ -1,21 +1,11 @@
 # -*- coding: utf-8 -*-
+# See LICENSE.txt
 
-# Copyright (c) 2015-2016 MIT Probabilistic Computing Project
-
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-
-#    http://www.apache.org/licenses/LICENSE-2.0
-
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
+import sys
+if sys.version_info.major == 2:
+    sys.exit('Python 3 is required.')
 
 # If some modules are not found, we use others, so no need to warn:
-# pylint: disable=import-error
 try:
     from setuptools import setup
     from setuptools.command.build_py import build_py
@@ -51,7 +41,7 @@ def get_version():
     desc = subprocess.check_output([
         'git', 'describe', '--dirty', '--long', '--match', 'v*',
     ])
-    match = re.match(r'^v([^-]*)-([0-9]+)-(.*)$', desc)
+    match = re.match(r'^v([^-]*)-([0-9]+)-(.*)$', desc.decode('ASCII'))
     assert match is not None
     verpart, revpart, localpart = match.groups()
     # Create a post version.
@@ -89,17 +79,16 @@ def write_version_py(path):
         version_old = None
     version_new = '__version__ = %r\n' % (full_version,)
     if version_old != version_new:
-        print 'writing %s' % (path,)
-        with open(path, 'wb') as f:
+        print('writing %s' % (path,))
+        with open(path, 'w') as f:
             f.write(version_new)
 
 def readme_contents():
     import os.path
-    readme_path = os.path.join(
-        os.path.abspath(os.path.dirname(__file__)),
-        'README.md')
+    root_path = os.path.abspath(os.path.dirname(__file__))
+    readme_path = os.path.join(root_path, 'README.md')
     with open(readme_path) as readme_file:
-        return unicode(readme_file.read(), 'UTF-8')
+        return readme_file.read()
 
 class local_build_py(build_py):
     def run(self):
@@ -151,9 +140,6 @@ setup(
     package_dir={
         'parallel_map': 'src',
     },
-    tests_require=[
-        'pytest',
-    ],
     cmdclass={
         'build_py': local_build_py,
         'sdist': local_sdist,

@@ -45,7 +45,7 @@ def parallel_map(f, l, parallelism=None):
     def process_output(fl, ctr, output):
         (i, ok, fx) = output
         if not ok:
-            raise RuntimeError('Subprocess failed: %s' % (fx,))
+            raise RuntimeError('Subprocess %d failed: %s' % (i, fx,))
         fl[i] = fx
         ctr[0] -= 1
 

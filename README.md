@@ -13,7 +13,7 @@ $ python setup.py build
 To build the software into the global installation of your environment (ideally,
 but not necessarily, a virtual environment), use:
 ```
-$ pip install --no-deps .
+$ pip install .
 ```
 
 ## Example

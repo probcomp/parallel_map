@@ -135,13 +135,12 @@ setup(
     ],
     packages=[
         'parallel_map',
+        'parallel_map.tests',
     ],
     package_dir={
         'parallel_map': 'src',
+        'parallel_map.tests': 'tests',
     },
-    tests_require=[
-        'pytest',
-    ],
     cmdclass={
         'build_py': local_build_py,
         'sdist': local_sdist,

@@ -1,8 +1,16 @@
 # A simple parallel map utility
 
-## Installation
+## Installing
 
 First find a Python 3 executable.
+
+### From PyPI
+
+```
+$ pip install parallel_map
+```
+
+### Manual Install
 
 The following step creates build a `build/` directory, which can be added
 to your `PYTHONPATH`.

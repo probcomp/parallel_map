@@ -1,5 +1,7 @@
 *.pyc
-src/version.py
-
+*.egg-info
 .cache
-build/
+
+/src/version.py
+/build/
+/dist/

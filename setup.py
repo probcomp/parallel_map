@@ -126,7 +126,7 @@ setup(
     url='https://github.com/probcomp/parallel_map',
     license='Apache-2.0',
     maintainer='Feras Saad',
-    maintainer_email='fsaad@.mit.edu',
+    maintainer_email='fsaad@mit.edu',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Science/Research',

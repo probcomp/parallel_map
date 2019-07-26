@@ -2,6 +2,7 @@
 *.egg-info
 .cache
 
-/src/version.py
 /build/
 /dist/
+/parallel_map-*
+/src/version.py

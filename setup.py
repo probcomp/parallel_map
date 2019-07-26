@@ -110,7 +110,7 @@ class local_sdist(sdist):
         # interrupted the whole sdist directory is only partially
         # written) but because the upstream sdist may have made a hard
         # link, so overwriting in place will edit the source tree.
-        with open(version_file + '.tmp', 'wb') as f:
+        with open(version_file + '.tmp', 'w') as f:
             f.write('%s\n' % (pkg_version,))
         os.rename(version_file + '.tmp', version_file)
 

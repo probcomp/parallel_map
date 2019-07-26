@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # See LICENSE.txt
 
+import os
 import sys
 if sys.version_info.major == 2:
     sys.exit('Python 3 is required.')
@@ -28,6 +29,12 @@ except ImportError:
             Command.set_undefined_options(self, opt, val)
 
 def get_version():
+    # The .git directory does not exist in the sdist, so read VERSION.
+    if not os.path.exists('.git'):
+        with open('VERSION', 'r') as f:
+            version = f.read().strip()
+            return version, version
+
     import re
     import subprocess
     # git describe a commit using the most recent tag reachable from it.

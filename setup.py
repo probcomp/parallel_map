@@ -2,9 +2,6 @@
 # See LICENSE.txt
 
 import os
-import sys
-if sys.version_info.major == 2:
-    sys.exit('Python 3 is required.')
 
 # If some modules are not found, we use others, so no need to warn:
 try:
